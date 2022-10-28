@@ -1,0 +1,5 @@
+# .vscode/
+node_modules/
+**/.jekyll-cache/
+**/*.js.map
+**/*.d.ts
