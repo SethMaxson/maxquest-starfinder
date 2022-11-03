@@ -1,4 +1,4 @@
-import * as THREE from '../../../../node_modules/three/src/Three.js';
+import * as THREE from '../../../node_modules/three/src/Three.js';
 import { EntityAbilities } from './entity/entityabilities.js';
 export class Motion extends THREE.Object3D {
     constructor(x = 0, y = 0, z = 0) {
@@ -81,7 +81,7 @@ export class PersonMotion extends Motion {
         var radius = 1; // m
         let sphereShape = new CANNON.Sphere(radius);
         this.physicsBody = new CANNON.Body({
-            mass: 5,
+            mass: 5, // kg
         });
         this.physicsBody.addShape(sphereShape, new CANNON.Vec3(0, 0, 0));
         // this.sphere.addShape(sphereShape, new CANNON.Vec3(0, 1, 0));

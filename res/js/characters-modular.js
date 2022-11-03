@@ -1,6 +1,6 @@
-import * as THREE from '../../../node_modules/three/src/Three.js';
-import { GLTFLoader } from '../../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-import { SkeletonUtils } from '../../../node_modules/three/examples/jsm/utils/SkeletonUtils.js';
+import * as THREE from '../../node_modules/three/src/Three.js';
+import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { SkeletonUtils } from '../../node_modules/three/examples/jsm/utils/SkeletonUtils.js';
 import { FOUR } from './four.js';
 import { PersonPhysicalFeature } from './characters/PersonPhysicalFeature.js';
 import { Hair } from './characters/Hair.js';

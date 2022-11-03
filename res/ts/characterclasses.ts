@@ -1,4 +1,6 @@
-class ThemeBenefit
+import { getFeats } from "./feats";
+
+export class ThemeBenefit
 {
 	level: number;
 	name?: string;
@@ -16,20 +18,20 @@ class ThemeBenefit
 		}
 	}
 }
-function getClasses() {
+export function getClasses() {
 	return $.ajax({ crossDomain: true, url: "/res/data/characterclasses.json", dataType: 'json' });
 }
-function getRaces() {
+export function getRaces() {
 	return $.ajax({ crossDomain: true, url: "/res/data/races.json", dataType: 'json' });
 }
-function getThemes() {
+export function getThemes() {
 	return $.ajax({ crossDomain: true, url: "/res/data/themes.json", dataType: 'json' });
 }
-function getRacialTraits() {
+export function getRacialTraits() {
 	return $.ajax({ crossDomain: true, url: "/res/data/racial-traits.json", dataType: 'json' });
 }
 
-class Race implements IRaceData
+export class Race implements IRaceData
 {
 	//@ts-ignore
 	ability = new Abilities(0, 0, 0, 0, 0, 0);
@@ -127,7 +129,7 @@ class Race implements IRaceData
 
 }
 
-interface IAbilities
+export interface IAbilities
 {
 	str?: number;
 	dex?: number;
@@ -138,7 +140,7 @@ interface IAbilities
 	[key: string]: number|undefined;
 }
 
-interface IRaceData {
+export interface IRaceData {
 	name: string;
 	ID: string;
 	ability: IAbilities;
@@ -151,23 +153,23 @@ interface IRaceData {
 	description: string;
 	features: any[];
 }
-class RacialBenefit
+export class RacialBenefit
 {
 	name: string = "";
 	description: string = "";
 	properties: RacialBenefitProperty[] = [];
 }
-class RacialBenefitProperty
+export class RacialBenefitProperty
 {
 	type: string = "";
 	properties: RacialBenefitPropertyEffect[] | string[] = [];
 }
-class RacialBenefitPropertyEffect
+export class RacialBenefitPropertyEffect
 {
 	name: string = "";
 	value: any;
 }
-class Theme
+export class Theme
 {
 	name: string;
 	benefits: ThemeBenefit[];
@@ -205,14 +207,14 @@ class Theme
 		return ab;
 	}
 }
-class CharacterClassBonus
+export class CharacterClassBonus
 {
 	ba: string = "";
 	fs: string = "";
 	rs: string = "";
 	ws: string = "";
 }
-class CharacterClass {
+export class CharacterClass {
 	name: string;
 	hpm: number;
 	spm: number;
@@ -341,7 +343,7 @@ class CharacterClass {
 		return spellsKnown;
 	}
 }
-class CharacterClasses
+export class CharacterClasses
 {
 	classes: CharacterClass[] = [];
 	get(name: string) {
@@ -441,7 +443,7 @@ class CharacterClasses
 	}
 }
 
-class Abilities implements IAbilities
+export class Abilities implements IAbilities
 {
 	str: number;
 	dex: number;
@@ -476,14 +478,14 @@ class Abilities implements IAbilities
 		return mods;
 	}
 }
-class MovementSpeed
+export class MovementSpeed
 {
 	burrow: number = 0;
 	fly: number = 0;
 	land: number = 30;
 	swim: number = 0;
 }
-class Character
+export class Character
 {
 	alignment: string = "";
 	class?: CharacterClass;
@@ -815,7 +817,7 @@ class Character
 					}
 					target.defaultClass = cd.defaultClass;
 					target.spells = cd.spells || [];
-					resolve();
+					resolve(undefined);
 				})
 			}
 		);
@@ -833,12 +835,12 @@ class Character
 		return this.classes.spellSlots;
 	}
 }
-class CharacterLevelClass
+export class CharacterLevelClass
 {
 	name: string = "";
 	choices: any = [];
 }
-class CharacterLevel
+export class CharacterLevel
 {
 	class: CharacterLevelClass;
 	skillRanks: SkillRanks;
@@ -854,7 +856,7 @@ class CharacterLevel
 		this.ability = new Abilities();
 	}
 }
-class SkillRanks
+export class SkillRanks
 {
 	ranks: number[];
 	names: string[];
@@ -901,7 +903,7 @@ class SkillRanks
 		return output;
 	}
 }
-class SkillMap extends SkillRanks
+export class SkillMap extends SkillRanks
 {
 	classBonus: number[] = [];
 	classSkill: boolean[] = [];
@@ -911,7 +913,7 @@ class SkillMap extends SkillRanks
 		super();
 	}
 }
-class SkillModifier
+export class SkillModifier
 {
 	name: string;
 	value: number;
@@ -920,7 +922,7 @@ class SkillModifier
 		this.value = value;
 	}
 }
-class Attack {
+export class Attack {
 	weapon: string;
 	level: string;
 	damage: string;

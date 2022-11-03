@@ -2,7 +2,7 @@
  * @author mrdoob / http://mrdoob.com/
  * @author Mugen87 / https://github.com/Mugen87
  */
-import { EventDispatcher, Object3D } from '../../../node_modules/three/src/Three.js';
+import { EventDispatcher, Object3D } from '../../node_modules/three/src/Three.js';
 export class PointerLockControls extends EventDispatcher {
     constructor(camera, domElement) {
         super();

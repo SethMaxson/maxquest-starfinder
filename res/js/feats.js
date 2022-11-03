@@ -1,8 +1,7 @@
-"use strict";
-function getFeats() {
+export function getFeats() {
     return $.ajax({ crossDomain: true, url: "/res/data/feats.json", dataType: 'json' });
 }
-class Feat {
+export class Feat {
     constructor(obj) {
         obj = obj || {};
         this.name = obj.name;
@@ -14,19 +13,19 @@ class Feat {
         this.page = obj.page;
     }
 }
-class FeatPrerequisites {
+export class FeatPrerequisites {
     constructor() {
         this.description = "";
         this.mappings = [];
     }
 }
-class FeatPrerequisiteMapping {
+export class FeatPrerequisiteMapping {
     constructor() {
         this.type = "";
         this.subType = "";
     }
 }
-class FeatManager {
+export class FeatManager {
     constructor(items) {
         this.allItems = items || [];
         this.filteredItems = items || [];
@@ -131,7 +130,7 @@ class FeatManager {
         saveJSON(this.allItems, "feats");
     }
 }
-function getFeatPreview(item) {
+export function getFeatPreview(item) {
     return $(`
 		<div class="header">
 			${item.name}

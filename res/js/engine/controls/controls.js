@@ -1,4 +1,4 @@
-import { EventDispatcher, Object3D } from './../../../../../node_modules/three/src/Three.js';
+import { EventDispatcher, Object3D } from './../../../../node_modules/three/src/Three.js';
 import { chunkScale } from "./../../chunk-loader.js";
 export class Controls extends EventDispatcher {
     constructor(camera, main) {

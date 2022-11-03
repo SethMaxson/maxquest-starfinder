@@ -1,5 +1,5 @@
-"use strict";
-class ThemeBenefit {
+import { getFeats } from "./feats";
+export class ThemeBenefit {
     constructor(lvl, name, description) {
         if (typeof lvl === 'object') {
             this.level = lvl.Level;
@@ -13,19 +13,19 @@ class ThemeBenefit {
         }
     }
 }
-function getClasses() {
+export function getClasses() {
     return $.ajax({ crossDomain: true, url: "/res/data/characterclasses.json", dataType: 'json' });
 }
-function getRaces() {
+export function getRaces() {
     return $.ajax({ crossDomain: true, url: "/res/data/races.json", dataType: 'json' });
 }
-function getThemes() {
+export function getThemes() {
     return $.ajax({ crossDomain: true, url: "/res/data/themes.json", dataType: 'json' });
 }
-function getRacialTraits() {
+export function getRacialTraits() {
     return $.ajax({ crossDomain: true, url: "/res/data/racial-traits.json", dataType: 'json' });
 }
-class Race {
+export class Race {
     constructor(o, subraceName) {
         //@ts-ignore
         this.ability = new Abilities(0, 0, 0, 0, 0, 0);
@@ -119,25 +119,25 @@ class Race {
         return results;
     }
 }
-class RacialBenefit {
+export class RacialBenefit {
     constructor() {
         this.name = "";
         this.description = "";
         this.properties = [];
     }
 }
-class RacialBenefitProperty {
+export class RacialBenefitProperty {
     constructor() {
         this.type = "";
         this.properties = [];
     }
 }
-class RacialBenefitPropertyEffect {
+export class RacialBenefitPropertyEffect {
     constructor() {
         this.name = "";
     }
 }
-class Theme {
+export class Theme {
     constructor(o) {
         if (typeof o === 'object') {
             this.name = o.name;
@@ -171,7 +171,7 @@ class Theme {
         return ab;
     }
 }
-class CharacterClassBonus {
+export class CharacterClassBonus {
     constructor() {
         this.ba = "";
         this.fs = "";
@@ -179,7 +179,7 @@ class CharacterClassBonus {
         this.ws = "";
     }
 }
-class CharacterClass {
+export class CharacterClass {
     constructor(o) {
         if (typeof o === 'object') {
             this.name = o.name;
@@ -295,7 +295,7 @@ class CharacterClass {
         return spellsKnown;
     }
 }
-class CharacterClasses {
+export class CharacterClasses {
     constructor() {
         this.classes = [];
     }
@@ -395,7 +395,7 @@ class CharacterClasses {
         return results;
     }
 }
-class Abilities {
+export class Abilities {
     constructor(str, dex, con, int, wis, cha) {
         this.str = str || 0;
         this.dex = dex || 0;
@@ -422,7 +422,7 @@ class Abilities {
         return mods;
     }
 }
-class MovementSpeed {
+export class MovementSpeed {
     constructor() {
         this.burrow = 0;
         this.fly = 0;
@@ -430,7 +430,7 @@ class MovementSpeed {
         this.swim = 0;
     }
 }
-class Character {
+export class Character {
     constructor() {
         this.alignment = "";
         this.deity = "";
@@ -744,7 +744,7 @@ class Character {
                 }
                 target.defaultClass = cd.defaultClass;
                 target.spells = cd.spells || [];
-                resolve();
+                resolve(undefined);
             });
         });
     }
@@ -760,13 +760,13 @@ class Character {
         return this.classes.spellSlots;
     }
 }
-class CharacterLevelClass {
+export class CharacterLevelClass {
     constructor() {
         this.name = "";
         this.choices = [];
     }
 }
-class CharacterLevel {
+export class CharacterLevel {
     constructor(className) {
         this.class = {
             name: className || "",
@@ -777,7 +777,7 @@ class CharacterLevel {
         this.ability = new Abilities();
     }
 }
-class SkillRanks {
+export class SkillRanks {
     constructor() {
         this.ranks = Array(21).fill(0);
         this.names = [
@@ -818,7 +818,7 @@ class SkillRanks {
         return output;
     }
 }
-class SkillMap extends SkillRanks {
+export class SkillMap extends SkillRanks {
     constructor() {
         super();
         this.classBonus = [];
@@ -826,13 +826,13 @@ class SkillMap extends SkillRanks {
         this.misc = [];
     }
 }
-class SkillModifier {
+export class SkillModifier {
     constructor(name, value) {
         this.name = name;
         this.value = value;
     }
 }
-class Attack {
+export class Attack {
     constructor() {
         this.weapon = "Unarmed Strike";
         this.level = "-";

@@ -1,4 +1,5 @@
-"use strict";
+import { ccm } from "./charactercreation";
+import { getFeats } from "./feats";
 // Character Sheet Data Manager
 class CharacterSheetDataManager {
     constructor() {
@@ -222,7 +223,7 @@ function getPage4() {
     createInventoryLogTable();
     createAmmoTable();
 }
-function populateCharacterSheet(char) {
+export function populateCharacterSheet(char) {
     populatePage1(char);
     populatePage2(char);
 }

@@ -81,14 +81,12 @@ export var Dialog;
                     label: "change", s: "Test", m: "Please select an option.",
                     answers: [
                         {
-                            m: "F", next: "main_menu",
-                            function: function (ent) {
+                            m: "F", next: "main_menu", function: function (ent) {
                                 ent.Model.gender = "f";
                             }
                         },
                         {
-                            m: "M", next: "main_menu",
-                            function: function (ent) {
+                            m: "M", next: "main_menu", function: function (ent) {
                                 ent.Model.gender = "m";
                             }
                         },
@@ -99,26 +97,22 @@ export var Dialog;
                     label: "hairstyles", s: "Test", m: "Please select an option.",
                     answers: [
                         {
-                            m: "Mohawk", next: "main_menu",
-                            function: function (ent) {
+                            m: "Mohawk", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Warhawk", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
                         {
-                            m: "Loose_Pony", next: "main_menu",
-                            function: function (ent) {
+                            m: "Loose_Pony", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Loose_Pony", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
                         {
-                            m: "Floppy", next: "main_menu",
-                            function: function (ent) {
+                            m: "Floppy", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Floppy", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
                         {
-                            m: "Pixie", next: "main_menu",
-                            function: function (ent) {
+                            m: "Pixie", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Pixie_Cut", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
@@ -129,26 +123,22 @@ export var Dialog;
                     label: "races", s: "Test", m: "Please select an option.",
                     answers: [
                         {
-                            m: "HalfOrc", next: "main_menu",
-                            function: function (ent) {
+                            m: "HalfOrc", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("halforc");
                             }
                         },
                         {
-                            m: "Human", next: "main_menu",
-                            function: function (ent) {
+                            m: "Human", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("human");
                             }
                         },
                         {
-                            m: "Halfling", next: "main_menu",
-                            function: function (ent) {
+                            m: "Halfling", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("halfling");
                             }
                         },
                         {
-                            m: "Drow", next: "main_menu",
-                            function: function (ent) {
+                            m: "Drow", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("drow");
                             }
                         },
@@ -175,14 +165,12 @@ export var Dialog;
                     label: "change", s: "Sidekick", m: "Please select an option.",
                     answers: [
                         {
-                            m: "F", next: "main_menu",
-                            function: function (ent) {
+                            m: "F", next: "main_menu", function: function (ent) {
                                 ent.Model.gender = "f";
                             }
                         },
                         {
-                            m: "M", next: "main_menu",
-                            function: function (ent) {
+                            m: "M", next: "main_menu", function: function (ent) {
                                 ent.Model.gender = "m";
                             }
                         },
@@ -193,26 +181,22 @@ export var Dialog;
                     label: "hairstyles", s: "Sidekick", m: "How should I wear my hair?",
                     answers: [
                         {
-                            m: "Mohawk", next: "main_menu",
-                            function: function (ent) {
+                            m: "Mohawk", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Warhawk", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
                         {
-                            m: "Braid", next: "main_menu",
-                            function: function (ent) {
+                            m: "Braid", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Long_Braid", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
                         {
-                            m: "Floppy", next: "main_menu",
-                            function: function (ent) {
+                            m: "Floppy", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Floppy", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
                         {
-                            m: "Pixie", next: "main_menu",
-                            function: function (ent) {
+                            m: "Pixie", next: "main_menu", function: function (ent) {
                                 ent?.Model.setHair("Pixie_Cut", ent.Model.userData.hairColor || 0x000000);
                             }
                         },
@@ -223,26 +207,22 @@ export var Dialog;
                     label: "races", s: "Sidekick", m: "Please select an option.",
                     answers: [
                         {
-                            m: "HalfOrc", next: "main_menu",
-                            function: function (ent) {
+                            m: "HalfOrc", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("halforc");
                             }
                         },
                         {
-                            m: "Human", next: "main_menu",
-                            function: function (ent) {
+                            m: "Human", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("human");
                             }
                         },
                         {
-                            m: "Halfling", next: "main_menu",
-                            function: function (ent) {
+                            m: "Halfling", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("halfling");
                             }
                         },
                         {
-                            m: "Drow", next: "main_menu",
-                            function: function (ent) {
+                            m: "Drow", next: "main_menu", function: function (ent) {
                                 ent?.Model.setRace("drow");
                             }
                         },

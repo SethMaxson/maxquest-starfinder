@@ -1,4 +1,4 @@
-import { Camera, EventDispatcher, Object3D } from './../../../../../node_modules/three/src/Three.js';
+import { Camera, EventDispatcher, Object3D } from './../../../../node_modules/three/src/Three.js';
 import { Main } from "./../engine.js";
 import { InputManager } from "./../inputmanager.js";
 import { Motion, PersonMotion, PlayerMotion } from './../motion.js';

@@ -1,5 +1,5 @@
-import * as THREE from '../../../../node_modules/three/src/Three.js';
-import { OutlineEffect } from '../../../../node_modules/three/examples/jsm/effects/OutlineEffect.js';
+import * as THREE from '../../../node_modules/three/src/Three.js';
+import { OutlineEffect } from '../../../node_modules/three/examples/jsm/effects/OutlineEffect.js';
 import { FOUR } from './../four.js';
 import { Characters } from './../characters.js';
 import { Sky } from './../sky.js';

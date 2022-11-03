@@ -13,7 +13,7 @@
  *
  * Three.js integration by zz85 http://twitter.com/blurspline
 */
-import { BackSide, Color, DirectionalLight, Fog, HemisphereLight, Mesh, MeshBasicMaterial, Object3D, ShaderMaterial, SphereBufferGeometry, Vector3, FrontSide } from '../../../node_modules/three/src/Three.js';
+import { BackSide, Color, DirectionalLight, Fog, HemisphereLight, Mesh, MeshBasicMaterial, Object3D, ShaderMaterial, SphereBufferGeometry, Vector3, FrontSide } from '../../node_modules/three/src/Three.js';
 export class Sky extends Object3D {
     // helper: DirectionalLightHelper;
     constructor(main) {

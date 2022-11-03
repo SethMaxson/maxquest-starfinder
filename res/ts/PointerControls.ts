@@ -7,7 +7,7 @@ import
 		Camera,
 		EventDispatcher,
 		Object3D
-	} from '../../../node_modules/three/src/Three.js';
+	} from '../../node_modules/three/src/Three.js';
 
 export class PointerLockControls extends EventDispatcher
 {

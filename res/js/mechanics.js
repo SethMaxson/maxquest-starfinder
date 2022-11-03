@@ -317,4 +317,5 @@ class Stats {
         this.hp = hp || 6 + this.attributes.conMod;
     }
 }
+export {};
 //# sourceMappingURL=mechanics.js.map

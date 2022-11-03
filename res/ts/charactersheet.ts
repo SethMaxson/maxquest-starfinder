@@ -1,3 +1,7 @@
+import { Character } from "./characterclasses";
+import { ccm } from "./charactercreation";
+import { Feat, getFeats } from "./feats";
+
 // Character Sheet Data Manager
 class CharacterSheetDataManager
 {
@@ -220,7 +224,7 @@ function getPage4() {
 	createInventoryLogTable();
 	createAmmoTable();
 }
-function populateCharacterSheet(char: Character) {
+export function populateCharacterSheet(char: Character) {
 	populatePage1(char);
 	populatePage2(char);
 }

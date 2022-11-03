@@ -1,5 +1,10 @@
-var ccm: CharacterCreationManager, ccdm: CharacterCreationDataManager;
-class CharacterCreationDataManager {
+import { Abilities, Character, CharacterClass, CharacterLevel, getClasses, getRaces, getThemes, IRaceData, Race, Theme } from "./characterclasses";
+import { populateCharacterSheet } from "./charactersheet";
+import { FeatManager } from "./feats";
+
+export var ccm: CharacterCreationManager;
+export var ccdm: CharacterCreationDataManager;
+export class CharacterCreationDataManager {
 	classes: CharacterClass[] = [];
 	feats?: any;
 	races: IRaceData[] = [];
@@ -8,7 +13,7 @@ class CharacterCreationDataManager {
 		this.feats = null;
 	}
 }
-class CharacterCreationManager
+export class CharacterCreationManager
 {
 	character: Character;
 	element: JQuery<HTMLElement>;
@@ -52,12 +57,12 @@ class CharacterCreationManager
 	}
 }
 
-function prepareCharacterCreationModal(char: Character) {
+export function prepareCharacterCreationModal(char: Character) {
 	ccm = new CharacterCreationManager(char);
 	ccdm = new CharacterCreationDataManager();
 }
 
-function updateRace(name: string, subraceName?: string) {
+export function updateRace(name: string, subraceName?: string) {
 	name = name || "Human";
 	subraceName = subraceName || "";
 
@@ -73,7 +78,7 @@ function updateRace(name: string, subraceName?: string) {
 	ccm.racePage.show();
 }
 
-function getRaceOptionEntry(item: IRaceData) {
+export function getRaceOptionEntry(item: IRaceData) {
 	const id = item.hasOwnProperty('ID')? item.ID.toLowerCase() : item.name.toLowerCase();
 	const l = "/img/portraits/" + id + ".png";
 	if (item.hasOwnProperty('subraces')) {
@@ -131,23 +136,26 @@ $(document).ready(function(){
 	});
 })
 
-function levelUpModalComplete(){
+export function levelUpModalComplete(){
 	const modal = $("#level-up");
 	const classVal = modal.find(".class-options .value").val() as string;
 	destroyModal(modal);
 }
-function closeModal(modal: JQuery<HTMLElement>) {
+
+export function closeModal(modal: JQuery<HTMLElement>) {
 	$(modal).hide();
 	if ($('.modal:visible').length == 0) {
 		$("#modal-blocker").hide();
 	}
 }
-function previousModal() {
+
+export function previousModal() {
 	const modal = $('.modal:visible');
 	modal.prev().show();
 	modal.hide();
 }
-function nextModal() {
+
+export function nextModal() {
 	const modal = $('.modal:visible');
 	modal.next().show();
 	modal.hide();
@@ -155,7 +163,8 @@ function nextModal() {
 		$("#modal-blocker").hide();
 	}
 }
-function destroyModal(modal: string | JQuery<HTMLElement>)
+
+export function destroyModal(modal: string | JQuery<HTMLElement>)
 {
 	//@ts-ignore
 	$(modal).remove();
@@ -163,13 +172,14 @@ function destroyModal(modal: string | JQuery<HTMLElement>)
 		$("#modal-blocker").hide();
 	}
 }
-function selectCharacterOption(sender: JQuery<HTMLElement>) {
+
+export function selectCharacterOption(sender: JQuery<HTMLElement>) {
 	sender = $(sender);
 	sender.closest(".subsection").find(".option-content").text(sender.val() as string);
 }
 
 /********* Stat Generator*********/
-function changeBase(this: HTMLInputElement, e: Event)
+export function changeBase(this: HTMLInputElement, e: Event)
 {
 	const o=Number($("#budget").val());
 	let a = 0;
@@ -183,11 +193,11 @@ function changeBase(this: HTMLInputElement, e: Event)
 	}
 	target.dataset.prev = target.value, $("#remaining").val(o - a), changeTotal()
 }
-function getCost(e: number): number{
+export function getCost(e: number): number{
 	// return e<14?e-8:14===e?7:9;
 	return e-10;
 }
-function changeTotal(){
+export function changeTotal(){
 	$("#pointbuy tr[id]").each((e,o)=>{
 		const [a, r, t, n, c] = $("input", o).get() as HTMLInputElement[];
 		var s=n.value=(Number(a.value)+Number(r.value)+Number(t.value)).toString();
@@ -196,7 +206,7 @@ function changeTotal(){
 }
 
 /************ Menu ************/
-function showMenu() {
+export function showMenu() {
 	const newpage = new ModalPopup("", "", "Menu", "X");
 	newpage.backLabel = "";
 	newpage.next = "destroyModal('.load-prompt'); $('.no-scroll').removeClass('no-scroll');";
@@ -246,7 +256,8 @@ function showLoadPlayerSelectMenu() {
 		}
 	)
 }
-function showLoadCharacterSelectMenu(player: string) {
+
+export function showLoadCharacterSelectMenu(player: string) {
 
 	$.ajax({ crossDomain: true, url: "/res/data/characters/index.json", dataType: 'json' }).done(
 		function(returnedData){
@@ -281,15 +292,15 @@ $(document).on("click", ".load-prompt .load-existing", function() {
 	showLoadPlayerSelectMenu();
 	destroyModal('.load-prompt');
 });
-function cancelLoadPlayerSelectMenu(){
+export function cancelLoadPlayerSelectMenu(){
 	showMenu();
 	destroyModal('.load-player-select-menu');
 }
-function cancelLoadCharacterSelectMenu(){
+export function cancelLoadCharacterSelectMenu(){
 	showLoadPlayerSelectMenu();
 	destroyModal('.load-character-select-menu');
 }
-function loadCharacter(name: string) {
+export function loadCharacter(name: string) {
 	destroyModal('.load-character-select-menu');
 	ccm.character.loadJson(name).then(function(){
 		populateCharacterSheet(ccm.character);

@@ -1,4 +1,4 @@
-import * as THREE from '../../../../../node_modules/three/src/Three.js';
+import * as THREE from '../../../../node_modules/three/src/Three.js';
 import { EntityEvents } from './entityevents.js';
 import { EntityAnimations } from './entityanimations.js';
 import { HitPoints } from '../engine.js';

@@ -1,4 +1,4 @@
-import * as THREE from '../../../../node_modules/three/src/Three.js';
+import * as THREE from '../../../node_modules/three/src/Three.js';
 import { FOUR } from './../four.js';
 export class PersonPhysicalFeature {
     constructor(style, size, color, relative) {

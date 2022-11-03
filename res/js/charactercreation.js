@@ -1,6 +1,9 @@
-"use strict";
-var ccm, ccdm;
-class CharacterCreationDataManager {
+import { Abilities, CharacterClass, CharacterLevel, getClasses, getRaces, getThemes, Race, Theme } from "./characterclasses";
+import { populateCharacterSheet } from "./charactersheet";
+import { FeatManager } from "./feats";
+export var ccm;
+export var ccdm;
+export class CharacterCreationDataManager {
     constructor() {
         this.classes = [];
         this.races = [];
@@ -8,7 +11,7 @@ class CharacterCreationDataManager {
         this.feats = null;
     }
 }
-class CharacterCreationManager {
+export class CharacterCreationManager {
     constructor(char) {
         this.character = char;
         this.element = $(`
@@ -41,11 +44,11 @@ class CharacterCreationManager {
         populateCharacterSheet(this.character);
     }
 }
-function prepareCharacterCreationModal(char) {
+export function prepareCharacterCreationModal(char) {
     ccm = new CharacterCreationManager(char);
     ccdm = new CharacterCreationDataManager();
 }
-function updateRace(name, subraceName) {
+export function updateRace(name, subraceName) {
     name = name || "Human";
     subraceName = subraceName || "";
     let race = ccdm.races.filter(function (entry) {
@@ -59,7 +62,7 @@ function updateRace(name, subraceName) {
     ccm.character.race = new Race(race, subraceName);
     ccm.racePage.show();
 }
-function getRaceOptionEntry(item) {
+export function getRaceOptionEntry(item) {
     const id = item.hasOwnProperty('ID') ? item.ID.toLowerCase() : item.name.toLowerCase();
     const l = "/img/portraits/" + id + ".png";
     if (item.hasOwnProperty('subraces')) {
@@ -114,23 +117,23 @@ $(document).ready(function () {
         selectCharacterOption(this);
     });
 });
-function levelUpModalComplete() {
+export function levelUpModalComplete() {
     const modal = $("#level-up");
     const classVal = modal.find(".class-options .value").val();
     destroyModal(modal);
 }
-function closeModal(modal) {
+export function closeModal(modal) {
     $(modal).hide();
     if ($('.modal:visible').length == 0) {
         $("#modal-blocker").hide();
     }
 }
-function previousModal() {
+export function previousModal() {
     const modal = $('.modal:visible');
     modal.prev().show();
     modal.hide();
 }
-function nextModal() {
+export function nextModal() {
     const modal = $('.modal:visible');
     modal.next().show();
     modal.hide();
@@ -138,19 +141,19 @@ function nextModal() {
         $("#modal-blocker").hide();
     }
 }
-function destroyModal(modal) {
+export function destroyModal(modal) {
     //@ts-ignore
     $(modal).remove();
     if ($('.modal:visible').length == 0) {
         $("#modal-blocker").hide();
     }
 }
-function selectCharacterOption(sender) {
+export function selectCharacterOption(sender) {
     sender = $(sender);
     sender.closest(".subsection").find(".option-content").text(sender.val());
 }
 /********* Stat Generator*********/
-function changeBase(e) {
+export function changeBase(e) {
     const o = Number($("#budget").val());
     let a = 0;
     const target = this;
@@ -162,11 +165,11 @@ function changeBase(e) {
     }
     target.dataset.prev = target.value, $("#remaining").val(o - a), changeTotal();
 }
-function getCost(e) {
+export function getCost(e) {
     // return e<14?e-8:14===e?7:9;
     return e - 10;
 }
-function changeTotal() {
+export function changeTotal() {
     $("#pointbuy tr[id]").each((e, o) => {
         const [a, r, t, n, c] = $("input", o).get();
         var s = n.value = (Number(a.value) + Number(r.value) + Number(t.value)).toString();
@@ -174,7 +177,7 @@ function changeTotal() {
     });
 }
 /************ Menu ************/
-function showMenu() {
+export function showMenu() {
     const newpage = new ModalPopup("", "", "Menu", "X");
     newpage.backLabel = "";
     newpage.next = "destroyModal('.load-prompt'); $('.no-scroll').removeClass('no-scroll');";
@@ -219,7 +222,7 @@ function showLoadPlayerSelectMenu() {
 			</div>`);
     });
 }
-function showLoadCharacterSelectMenu(player) {
+export function showLoadCharacterSelectMenu(player) {
     $.ajax({ crossDomain: true, url: "/res/data/characters/index.json", dataType: 'json' }).done(function (returnedData) {
         var options = "";
         var items = returnedData.items.filter(function (entry) {
@@ -250,15 +253,15 @@ $(document).on("click", ".load-prompt .load-existing", function () {
     showLoadPlayerSelectMenu();
     destroyModal('.load-prompt');
 });
-function cancelLoadPlayerSelectMenu() {
+export function cancelLoadPlayerSelectMenu() {
     showMenu();
     destroyModal('.load-player-select-menu');
 }
-function cancelLoadCharacterSelectMenu() {
+export function cancelLoadCharacterSelectMenu() {
     showLoadPlayerSelectMenu();
     destroyModal('.load-character-select-menu');
 }
-function loadCharacter(name) {
+export function loadCharacter(name) {
     destroyModal('.load-character-select-menu');
     ccm.character.loadJson(name).then(function () {
         populateCharacterSheet(ccm.character);

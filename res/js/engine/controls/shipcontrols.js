@@ -1,4 +1,4 @@
-import * as THREE from '../../../../../node_modules/three/src/Three.js';
+import * as THREE from '../../../../node_modules/three/src/Three.js';
 import { Attitude } from "./../engine.js";
 import { Motion } from './../motion.js';
 import { Controls } from './controls.js';

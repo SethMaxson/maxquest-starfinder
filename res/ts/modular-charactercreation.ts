@@ -1,6 +1,6 @@
 import { Engine } from './engine.js';
-import * as THREE from '../../../node_modules/three/src/Three.js';
-import { OrbitControls } from '../../../node_modules/three/examples/jsm/controls/OrbitControls.js';
+import * as THREE from '../../node_modules/three/src/Three.js';
+import { OrbitControls } from '../../node_modules/three/examples/jsm/controls/OrbitControls.js';
 import { CharactersModular } from './characters-modular.js';
 import { FOUR } from './four.js';
 import { THREEx } from './threex.js';

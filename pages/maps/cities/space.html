@@ -10,11 +10,11 @@
 		<script src="/res/data/dialog.js"></script>
 		<script src="/res/js/three.min.js"></script>
 		<script src="/res/js/generators/npc.js"></script>
-		<script src="/res/js/mechanics.js"></script>
+		<script type="module" src="/res/js/mechanics.js"></script>
 		<script src="/res/js/loaders/GLTFLoader.js"></script>
 		<script src="/res/js/utils/SkeletonUtils.js"></script>
 		<script src="/res/js/hud.js"></script>
-		<script src="/res/js/characters.js"></script>
+		<script type="module" src="/res/js/characters.js"></script>
 		<script src="/res/js/environment.js"></script>
 		<script src="/res/js/PointerLockControls.js"></script>
 		<script src="/res/js/threex.proceduralcity2.js"></script>
@@ -390,7 +390,8 @@
 				}
 			}
 		</script>
-		<script>
+		<script type="module">
+			import { Characters } from "/res/js/characters.js";
 			var onRenderFcts= [];
 			var rain, rainGeo, rainMaterial;
 			var raining = false;
@@ -434,7 +435,7 @@
 						300
 					);
 
-					renderer = new THREE.WebGLRenderer( { antialias: true } );
+					window.renderer = renderer = new THREE.WebGLRenderer( { antialias: true } );
 					renderer.setPixelRatio( window.devicePixelRatio );
 					renderer.sortObjects = true;
 					renderer.shadowMap.enabled = true;
@@ -505,17 +506,17 @@
 
 					var people = new THREE.Object3D();
 					people.castShadow = true;
-					var ldr = new PersonLoader(function() {
+					var ldr = new Characters.PersonLoader(function() {
 						people.name="PeopleGroup"
 
 						// people.add(getPC("Namfoodle", -1, 0, 0));
-						people.add(getPC("Sir Jasper", 5, 0.1, 20));
-						people.add(getPC("Kitsune", 0, 0.1, 20));
-						people.add(getPC("Kitsune", 0, 0, -30));
-						people.add(getNPC("Ribbert", -3, 0, 5));
-						people.add(getPC("Shamous", -2, 0, 2));
-						var playerModel = getPC("Player", 0, 0, 0);
-						people.add(getPC("Torque", 3, 0.1, 20));
+						people.add(Characters.getPC("Sir Jasper", 5, 0.1, 20));
+						people.add(Characters.getPC("Kitsune", 0, 0.1, 20));
+						people.add(Characters.getPC("Kitsune", 0, 0, -30));
+						people.add(Characters.getNPC("Ribbert", -3, 0, 5));
+						people.add(Characters.getPC("Shamous", -2, 0, 2));
+						var playerModel = Characters.getPC("Player", 0, 0, 0);
+						people.add(Characters.getPC("Torque", 3, 0.1, 20));
 						scene.add(playerModel);
 						playerModel.visible = false;
 						playerControls.model = playerModel;
@@ -543,14 +544,14 @@
 						// people.add(getRandom(1, 0, 12, "human", "f"));
 						// people.add(getRandom(2, 0, 12, "gnome", "m"));
 						// people.add(getRandom(3, 0, 12, "gnome", "f"));
-						people.add(getRandom(4, 0.1, 22, "tiefling", "m"));
+						people.add(Characters.getRandom(4, 0.1, 22, "tiefling", "m"));
 						// people.add(getRandom(5, 0, 12, "tiefling", "f"));
 						// people.add(getRandom(-4, 0, 14, "dwarf", "m"));
 						// people.add(getRandom(-3, 0, 14, "dwarf", "f"));
-						people.add(getRandom(-2, 0.1, 24, "elf", "m"));
-						people.add(getRandom(-1, 0.1, 24, "elf", "f"));
-						people.add(getRandom(0, 0.1, 24, "aasimar", "m"));
-						people.add(getRandom(1, 0.1, 24, "aasimar", "f"));
+						people.add(Characters.getRandom(-2, 0.1, 24, "elf", "m"));
+						people.add(Characters.getRandom(-1, 0.1, 24, "elf", "f"));
+						people.add(Characters.getRandom(0, 0.1, 24, "aasimar", "m"));
+						people.add(Characters.getRandom(1, 0.1, 24, "aasimar", "f"));
 						// people.add(getRandom(2, 0, 14, "firbolg", "m"));
 						// people.add(getRandom(3, 0, 14, "firbolg", "f"));
 						// people.add(getRandom(4, 0, 14, "tabaxi", "m"));
@@ -803,7 +804,7 @@
 							specularMap: new THREE.TextureLoader().load('/img/textures/skyscraper_spec.png')
 						})
 					);
-					textures = ['map', 'emissiveMap', 'specularMap'];
+					const textures = ['map', 'emissiveMap', 'specularMap'];
 					textures.forEach((mapName) => {
 						building.material[mapName].wrapS = THREE.RepeatWrapping;
 						building.material[mapName].wrapT = THREE.RepeatWrapping;

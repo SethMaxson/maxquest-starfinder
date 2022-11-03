@@ -1,8 +1,10 @@
-function getFeats() {
+import { Character } from "./characterclasses";
+
+export function getFeats() {
 	return $.ajax({ crossDomain: true, url: "/res/data/feats.json", dataType: 'json' });
 }
 
-class Feat{
+export class Feat{
 	name: string;
 	combatFeat: boolean;
 	prerequisites?: FeatPrerequisites;
@@ -23,14 +25,14 @@ class Feat{
 	}
 }
 
-class FeatPrerequisites
+export class FeatPrerequisites
 {
 	description: string = "";
 	mappings: FeatPrerequisiteMapping[] = [];
 	[key: string]: any;
 }
 
-class FeatPrerequisiteMapping
+export class FeatPrerequisiteMapping
 {
 	type: string = "";
 	subType: string = "";
@@ -38,7 +40,7 @@ class FeatPrerequisiteMapping
 	[key: string]: any;
 }
 
-class FeatManager
+export class FeatManager
 {
 	allItems: Feat[];
 	filteredItems: Feat[];
@@ -148,7 +150,7 @@ class FeatManager
 	}
 }
 
-function getFeatPreview(item: any) {
+export function getFeatPreview(item: any) {
 	return $(`
 		<div class="header">
 			${item.name}
