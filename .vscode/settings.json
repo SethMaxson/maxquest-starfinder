@@ -114,5 +114,6 @@
 		"undeath",
 		"vegepygmy",
 		"warforged"
-	]
+	],
+	"liveServer.settings.port": 5501
 }

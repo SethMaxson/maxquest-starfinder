@@ -9,13 +9,13 @@
          This makes it easier to make new pages for your site. -->
 		<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
 
-		<link href="/style.css" rel="stylesheet" type="text/css" media="all">
-		<link href="/res/css/system-viewer.css" rel="stylesheet" type="text/css" media="all">
+		<link href="../../style.css" rel="stylesheet" type="text/css" media="all">
+		<link href="../../res/css/system-viewer.css" rel="stylesheet" type="text/css" media="all">
 		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-		<script src="/res/js/mechanics.js"></script>
-		<script src="/res/js/starmap.js"></script>
-		<script src="/res/js/panzoom.js"></script>
-		<script src="/res/js/sort-table.js"></script>
+		<script src="../../res/js/mechanics.js"></script>
+		<script src="../../res/js/starmap.js"></script>
+		<script src="../../res/js/panzoom.js"></script>
+		<script src="../../res/js/sort-table.js"></script>
 		<script>
 			var panzoom;
 			var systems, planets, planetFluff, targetSystem, targetPlanet;
@@ -44,7 +44,7 @@
 
 				$.ajax({
 					crossDomain: true,
-					url: "/res/data/planets.json",
+					url: "../../res/data/planets.json",
 					dataType: 'json',
 					error: function (xmlHttpReq, status, err) {
 						var something = xmlHttpReq;
@@ -57,7 +57,7 @@
 				// Load fluff
 				$.ajax({
 					crossDomain: true,
-					url: "/res/data/fluff-planets.json",
+					url: "../../res/data/fluff-planets.json",
 					dataType: 'json',
 					error: function (xmlHttpReq, status, err) {
 						var something = xmlHttpReq;
@@ -69,7 +69,7 @@
 
 				$.ajax({
 					crossDomain: true,
-					url: "/res/data/systems.json",
+					url: "../../res/data/systems.json",
 					dataType: 'json',
 					error: function (xmlHttpReq, status, err) {
 						var something = xmlHttpReq;
@@ -148,7 +148,7 @@
 				// `);
 				// size = (parseFloat(planet.data.diameter)/size)*100;
 				return $(`
-					<img src="/img/locales/planets/preview/${planet.fluff.images.body}" style="height:${size}px;" />
+					<img src="../../img/locales/planets/preview/${planet.fluff.images.body}" style="height:${size}px;" />
 				`);
 			}
 			function getAllSystems() {
@@ -262,7 +262,7 @@
 				getInfoText(planet);
 			}
 			function getPlanetImage(item) {
-				const bg = "url(/img/locales/planets/preview/" + item.images.body + ")";
+				const bg = "url(../../img/locales/planets/preview/" + item.images.body + ")";
 				$(".background-div").css("background-image", bg);
 			}
 			function getDataBlock(planet) {
